@@ -19,7 +19,6 @@ package au.com.alderaan.eclipselink.mojo;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.persistence.logging.SessionLog;
 import org.eclipse.persistence.tools.weaving.jpa.StaticWeaveProcessor;
@@ -69,11 +68,10 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
     private MavenProject project;
 
     public void execute() throws MojoExecutionException {
-        Log log = getLog();
         try {
             StaticWeaveProcessor weave = new StaticWeaveProcessor(source, target);
             URL[] urls = buildClassPath();
-            if (urls != null) {
+            if (urls.length > 0) {
                 URLClassLoader classLoader = new URLClassLoader(urls, Thread.currentThread().getContextClassLoader());
                 weave.setClassLoader(classLoader);
             }
