@@ -83,9 +83,11 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
             weave.setLog(new PrintWriter(System.out));
             weave.setLogLevel(SessionLog.ALL);
             weave.performWeaving();
-        } catch (URISyntaxException e) {
+        } catch (MalformedURLException e) {
             throw new MojoExecutionException("Failed", e);
         } catch (IOException e) {
+            throw new MojoExecutionException("Failed", e);
+        } catch (URISyntaxException e) {
             throw new MojoExecutionException("Failed", e);
         }
     }
@@ -95,7 +97,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
         List<URL> urls = new ArrayList<URL>();
         Set<Artifact> artifacts = (Set<Artifact>) project.getArtifacts();
         for (Artifact a : artifacts) {
-            urls.add(new URL("file://" + a.getFile().getAbsolutePath()));
+            urls.add(a.getFile().toURI().toURL());
         }
         return urls.toArray(new URL[urls.size()]);
     }
