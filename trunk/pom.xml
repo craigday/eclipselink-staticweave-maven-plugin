@@ -7,6 +7,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>eclipselink-staticweave-maven-plugin Maven Mojo</name>
     <url>http://code.google.com/p/eclipselink-staticweave-maven-plugin/</url>
+    <description>Maven Plugin for Eclipselink Static Weaving</description>
+
+    <parent>
+      <groupId>org.sonatype.oss</groupId>
+      <artifactId>oss-parent</artifactId>
+      <version>7</version>
+    </parent>
 
     <developers>
         <developer>
@@ -15,6 +22,20 @@
             <url>https://profiles.google.com/craigday</url>
         </developer>
     </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://code.google.com/p/eclipselink-staticweave-maven-plugin/source/browse/</url>
+        <connection>scm:svn:https://eclipselink-staticweave-maven-plugin.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://eclipselink-staticweave-maven-plugin.googlecode.com/svn/trunk/</developerConnection>
+    </scm>
 
     <properties>
         <maven.version>2.0.9</maven.version>
