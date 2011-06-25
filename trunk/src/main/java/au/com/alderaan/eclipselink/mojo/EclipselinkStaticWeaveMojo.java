@@ -101,15 +101,15 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
     }
 
     public void setLogLevel(String logLevel) {
-        if (logLevel.equalsIgnoreCase(SessionLog.OFF_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.SEVERE_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.WARNING_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.INFO_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.CONFIG_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.FINE_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.FINER_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.FINEST_LABEL) ||
-            logLevel.equalsIgnoreCase(SessionLog.ALL_LABEL)) {
+        if (SessionLog.OFF_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.SEVERE_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.WARNING_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.INFO_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.CONFIG_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.FINE_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.FINER_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.FINEST_LABEL.equalsIgnoreCase(logLevel) ||
+            SessionLog.ALL_LABEL.equalsIgnoreCase(logLevel)) {
             this.logLevel = logLevel.toUpperCase();
         } else {
             throw new IllegalArgumentException("Unknown log level: " + logLevel);
