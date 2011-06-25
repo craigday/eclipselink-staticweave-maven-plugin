@@ -20,6 +20,7 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
+import org.eclipse.persistence.logging.AbstractSessionLog;
 import org.eclipse.persistence.logging.SessionLog;
 import org.eclipse.persistence.tools.weaving.jpa.StaticWeaveProcessor;
 
@@ -59,6 +60,11 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
     private String target;
 
     /**
+     * @parameter default-value="OFF"
+     */
+    private String logLevel = SessionLog.OFF_LABEL;
+
+    /**
      * The maven project descriptor
      *
      * @parameter expression="${project}"
@@ -79,7 +85,7 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
                 weave.setPersistenceInfo(persistenceInfo);
             }
             weave.setLog(new PrintWriter(System.out));
-            weave.setLogLevel(SessionLog.ALL);
+            weave.setLogLevel(getLogLevel());
             weave.performWeaving();
         } catch (MalformedURLException e) {
             throw new MojoExecutionException("Failed", e);
@@ -87,6 +93,26 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
             throw new MojoExecutionException("Failed", e);
         } catch (URISyntaxException e) {
             throw new MojoExecutionException("Failed", e);
+        }
+    }
+
+    private int getLogLevel() {
+        return AbstractSessionLog.translateStringToLoggingLevel(logLevel);
+    }
+
+    public void setLogLevel(String logLevel) {
+        if (logLevel.equalsIgnoreCase(SessionLog.OFF_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.SEVERE_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.WARNING_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.INFO_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.CONFIG_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.FINE_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.FINER_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.FINEST_LABEL) ||
+            logLevel.equalsIgnoreCase(SessionLog.ALL_LABEL)) {
+            this.logLevel = logLevel.toUpperCase();
+        } else {
+            throw new IllegalArgumentException("Unknown log level: " + logLevel);
         }
     }
 
