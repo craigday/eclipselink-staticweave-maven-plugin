@@ -38,7 +38,7 @@
 
     <properties>
         <maven.version>2.0.9</maven.version>
-        <eclipselink.version>2.2.0</eclipselink.version>
+        <eclipselink.version>2.3.2</eclipselink.version>
         <jpa.version>2.0.0</jpa.version>
     </properties>
 
@@ -74,6 +74,13 @@
             <version>${jpa.version}</version>
         </dependency>
     </dependencies>
+
+	<repositories>
+		<repository>
+			<id>eclipselink</id>
+			<url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+		</repository>
+	</repositories>
 
     <profiles>
         <!-- Signing with gpg -->
