@@ -50,6 +50,11 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
     private String persistenceInfo;
 
     /**
+     * @parameter expression="${weave.persistenceXMLLocation}
+     */
+    private String persistenceXMLLocation;
+
+    /**
      * @parameter expression="${project.build.outputDirectory}
      */
     private String source;
@@ -83,6 +88,9 @@ public class EclipselinkStaticWeaveMojo extends AbstractMojo {
             }
             if (persistenceInfo != null) {
                 weave.setPersistenceInfo(persistenceInfo);
+            }
+            if (persistenceXMLLocation != null) {
+                weave.setPersistenceXMLLocation(persistenceXMLLocation);
             }
             weave.setLog(new PrintWriter(System.out));
             weave.setLogLevel(getLogLevel());
