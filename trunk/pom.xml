@@ -20,6 +20,10 @@
             <email>craigday@gmail.com</email>
             <url>https://profiles.google.com/craigday</url>
         </developer>
+        <developer>
+            <name>Tim Cole</name>
+            <email>timothy.j.cole@gmail.com</email>
+        </developer>
     </developers>
 
     <licenses>
@@ -75,12 +79,12 @@
         </dependency>
     </dependencies>
 
-	<repositories>
-		<repository>
-			<id>eclipselink</id>
-			<url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>eclipselink</id>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+        </repository>
+    </repositories>
 
     <profiles>
         <!-- Signing with gpg -->
