@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>au.com.alderaan</groupId>
+    <artifactId>eclipselink-staticweave-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
+    <version>1.0.4</version>
+    <name>eclipselink-staticweave-maven-plugin Maven Mojo</name>
+    <url>http://code.google.com/p/eclipselink-staticweave-maven-plugin/</url>
+    <description>Maven Plugin for Eclipselink Static Weaving</description>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <developers>
+        <developer>
+            <name>Craig Day</name>
+            <email>craigday@gmail.com</email>
+            <url>https://profiles.google.com/craigday</url>
+        </developer>
+        <developer>
+            <name>Tim Cole</name>
+            <email>timothy.j.cole@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://code.google.com/p/eclipselink-staticweave-maven-plugin/source/browse/tags/eclipselink-staticweave-maven-plugin-1.0.4</url>
+        <connection>scm:svn:https://eclipselink-staticweave-maven-plugin.googlecode.com/svn/tags/eclipselink-staticweave-maven-plugin-1.0.4</connection>
+        <developerConnection>scm:svn:https://eclipselink-staticweave-maven-plugin.googlecode.com/svn/tags/eclipselink-staticweave-maven-plugin-1.0.4</developerConnection>
+    </scm>
+
+    <properties>
+        <maven.version>2.0.9</maven.version>
+        <eclipselink.version>2.3.2</eclipselink.version>
+        <jpa.version>2.0.0</jpa.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-classworlds</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-project</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>${jpa.version}</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>eclipselink</id>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <!-- Signing with gpg -->
+        <!-- Sign the artifacts by calling mvn -P sign [..] -->
+        <profile>
+            <id>sign</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
