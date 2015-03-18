@@ -121,11 +121,11 @@ probably need to add a reference to the Eclipselink Maven repo as well. e.g.
 ```
 
 ## Configuration
-|Setting     |Description                                                                           |
-|------------|--------------------------------------------------------------------------------------|
-| source     | Location of the source JPA classes and persistence.xml file.                         |
-|            | Defaults to ${project.build.outputDirectory}                                         |
-| target     | Destination for the weaved classes. Defaults to ${project.build.outputDirectory}     |
-| persistenceXMLLocation | Override where to find persistence.xml.                                  |
-| logLevel   | Logging level (OFF|SEVERE|WARNING|INFO|CONFIG|FINE|FINER|FINEST|ALL) Defaults to OFF.|
------------------------------------------------------------------------------------------------------
+
+|Setting     |Description                                                      | Default                          |
+|------------|----------------------------------------------------------------------------------------------------|
+| source     | Location of the source JPA classes and persistence.xml file.    | ${project.build.outputDirectory} |
+| target     | Destination for the weaved classes.                             | ${project.build.outputDirectory} |
+| persistenceXMLLocation | Override where to find persistence.xml.             |                                  |
+| logLevel   | Log level (OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL)| OFF                              |
+-------------------------------------------------------------------------------------------------------------------
